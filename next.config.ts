@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 60,
-    qualities: [75, 95, 100],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -22,7 +21,7 @@ const nextConfig: NextConfig = {
   
   // Optimize performance
   experimental: {
-    optimizePackageImports: ['@/components'],
+    optimizePackageImports: ['@/components', '@/hooks'],
   },
   
   // Security headers
@@ -47,6 +46,10 @@ const nextConfig: NextConfig = {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin'
           },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()'
+          }
         ],
       },
     ]

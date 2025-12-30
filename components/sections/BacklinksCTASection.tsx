@@ -3,7 +3,7 @@ import { Container } from "@/components/ui/Container";
 
 export function BacklinksCTASection() {
   return (
-    <section className="py-10 px-4">
+    <section className="py-10 px-4" aria-label="Backlinks CTA">
       <Container size="lg">
         <div className="w-full max-w-[1126px] min-h-[194px] lg:h-[194px] mx-auto bg-gradient-to-br from-[#5048E5] via-purple-600 to-[#8B63E9] rounded-[40px] shadow-2xl overflow-hidden">
           <div className="flex flex-col lg:flex-row items-center lg:items-center h-full py-8 lg:py-0 gap-6 lg:gap-0 overflow-hidden relative">
@@ -24,9 +24,11 @@ export function BacklinksCTASection() {
               <div className="flex justify-center lg:justify-start mt-2">
                 <a
                   href="#"
-                  className="inline-flex items-center justify-center w-full sm:w-[241px] h-[51px] px-6 sm:px-8 py-4 gap-2 font-inter text-sm sm:text-base font-semibold leading-none text-center whitespace-nowrap bg-white text-indigo-600 rounded-full shadow-lg hover:bg-indigo-50 hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out"
+                  rel="noopener noreferrer"
+                  aria-label="Visit MediaBoost for backlinks and media coverage"
+                  className="inline-flex items-center justify-center w-full sm:w-[241px] h-[51px] px-6 sm:px-8 py-4 gap-2 font-inter text-sm sm:text-base font-semibold leading-none text-center whitespace-nowrap bg-white text-indigo-600 rounded-full shadow-lg hover:bg-indigo-50 hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-indigo-600"
                 >
-                  👉 Visit Mediaboost Ⓜ️
+                  <span aria-hidden="true">👉</span> Visit Mediaboost <span aria-hidden="true">Ⓜ️</span>
                 </a>
               </div>
             </div>
