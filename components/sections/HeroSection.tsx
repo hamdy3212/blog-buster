@@ -25,13 +25,12 @@ export function HeroSection() {
           <div className="inline-flex items-center bg-white/80 backdrop-blur-sm mb-9 mx-auto w-full max-w-[371px] h-[38px] px-4 py-2 rounded-full border border-[#E0E0EB] gap-2 shadow-[0px_4px_24px_-4px_rgba(80,61,245,0.15)]">
             <Image
               src="/images/shine-icon.png"
-              alt=""
+              alt="Shine icon representing innovation"
               width={16}
               height={16}
               quality={100}
               fetchPriority="high"
               className="flex-shrink-0"
-              aria-hidden="true"
             />
             <span className="text-gray-700 font-inter text-[12px] lg:text-[14px] font-medium">
               Programmatic SEO without code or developers
@@ -88,13 +87,12 @@ export function HeroSection() {
           <div className="flex items-center justify-center gap-3 px-4 pt-2">
             <Image
               src="/images/flower-icon-left.png"
-              alt=""
+              alt="Decorative flower icon"
               width={20}
               height={20}
               quality={100}
               fetchPriority="high"
               className="flex-shrink-0"
-              aria-hidden="true"
             />
             <p className="text-[#6C7393] text-center font-inter text-sm font-medium leading-5">
               The world&apos;s top companies are doing programmatic SEO. We&apos;ll get
@@ -102,12 +100,11 @@ export function HeroSection() {
             </p>
             <Image
               src="/images/flower-icon.png"
-              alt=""
+              alt="Decorative flower icon"
               width={20}
               height={20}
               quality={100}
               className="flex-shrink-0"
-              aria-hidden="true"
             />
           </div>
 

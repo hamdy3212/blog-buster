@@ -8,6 +8,8 @@ const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -15,10 +17,12 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["700"],
   display: "swap",
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://blogbuster.com'), // Update with your domain
+  metadataBase: new URL('https://blog-buster-inky.vercel.app'),
   title: {
     default: "Programmatic SEO Pages at Scale | Generate Thousands of SEO-Optimized Pages",
     template: "%s | Blog Buster"
@@ -36,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Attract Long-Tail Traffic with SEO Pages at Scale",
     description: "Generate thousands of SEO-optimized pages automatically to capture inbound leads.",
-    url: "https://blogbuster.com",
+    url: "https://blog-buster-inky.vercel.app",
     siteName: "Blog Buster",
     type: "website",
     locale: "en_US",
@@ -68,7 +72,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://blogbuster.com",
+    canonical: "https://blog-buster-inky.vercel.app",
   },
   verification: {
     // Add your verification codes here when available
@@ -115,6 +119,7 @@ export default function RootLayout({
       </head>
       <body
         className={`${inter.variable} ${plusJakartaSans.variable} antialiased`}
+        suppressHydrationWarning
       >
         <ToastProvider>
           {children}
