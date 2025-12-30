@@ -35,10 +35,10 @@ export function BacklinksCTASection() {
             <Image
               src="/images/publications-social-proof.png"
               alt="MediaBoost featured in top publications: Yahoo Finance with 92 DR Score, Associated Press with 119.6M viewers, and Business Insider with 92 DR Score"
-              quality={100}
+              quality={90}
               width={600}
               height={194}
-              priority
+              loading="lazy"
               className="hidden lg:block absolute h-full flex-shrink-0 right-[80px]"
             />
           </div>

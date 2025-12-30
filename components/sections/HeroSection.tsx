@@ -56,10 +56,12 @@ export function HeroSection() {
 
   return (
     <section className="relative py-10 sm:py-28 lg:py-25 bg-white">
-      {/* Background decorations */}
-      {BACKGROUND_CIRCLES.map((circle, index) => (
-        <BackgroundCircle key={index} {...circle} />
-      ))}
+      {/* Background decorations - Hidden on mobile for better performance */}
+      <div className="hidden lg:block">
+        {BACKGROUND_CIRCLES.map((circle, index) => (
+          <BackgroundCircle key={index} {...circle} />
+        ))}
+      </div>
 
       <Container size="lg">
         <div className="text-center mx-auto">
@@ -71,6 +73,7 @@ export function HeroSection() {
               width={16}
               height={16}
               quality={100}
+              fetchPriority="high"
               className="flex-shrink-0"
             />
             <span className="text-gray-700 font-inter text-[12px] lg:text-[14px] font-medium">
@@ -124,6 +127,7 @@ export function HeroSection() {
               width={20}
               height={20}
               quality={100}
+              fetchPriority="high"
               className="flex-shrink-0 "
             />
             <p className="text-[#6C7393] text-center font-inter text-sm font-medium leading-5">
@@ -143,12 +147,15 @@ export function HeroSection() {
           <Image
             src="/images/template-visualization.png"
             alt="Programmatic SEO page template showing dynamic variables that generate infinite page variations including Finance in Houston, Healthcare in Austin, Technology in Dallas, and 788+ more variations"
-            width={1920}
-            height={1080}
-            quality={95}
+            width={1200}
+            height={675}
+            quality={85}
             priority
-            className="w-full h-full object-contain mt-[100px] hidden lg:block"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+            fetchPriority="high"
+            className="w-full h-auto object-contain mt-[100px] hidden lg:block"
+            sizes="(max-width: 1024px) 100vw, 1200px"
+            placeholder="blur"
+            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
           />
         </div>
       </Container>
