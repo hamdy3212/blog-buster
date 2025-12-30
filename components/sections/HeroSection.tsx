@@ -2,9 +2,27 @@
 
 import { useState, FormEvent } from "react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
-import { Input } from "@/components/ui/Input";
 import Image from "next/image";
+import { BACKGROUND_CIRCLES } from "./HeroSection.constants";
+
+// Background circle decoration component
+const BackgroundCircle = ({ top, bottom, left, right, size, color, opacity, centered }: any) => (
+  <div
+    className="absolute pointer-events-none"
+    style={{
+      ...(top && { top }),
+      ...(bottom && { bottom }),
+      ...(left && { left }),
+      ...(right && { right }),
+      ...(centered && { transform: "translate(-50%, -50%)" }),
+      width: `${size}px`,
+      height: `${size}px`,
+      background: `radial-gradient(circle, rgba(${color}, ${opacity}), transparent 70%)`,
+      filter: "blur(80px)",
+      zIndex: 0,
+    }}
+  />
+);
 
 export function HeroSection() {
   const [email, setEmail] = useState("");
@@ -37,79 +55,49 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative py-10 sm:py-28 lg:py-25 overflow-hidden">
+    <section className="relative py-10 sm:py-28 lg:py-25 bg-white">
       {/* Background decorations */}
-      <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
+      {BACKGROUND_CIRCLES.map((circle, index) => (
+        <BackgroundCircle key={index} {...circle} />
+      ))}
 
       <Container size="lg">
-        <div className="text-center max-w-4xl mx-auto px-4">
+        <div className="text-center mx-auto">
           {/* Badge */}
-          <div 
-            className="inline-flex items-center bg-white/80 mb-9 mx-auto w-full max-w-[371px] px-4 py-2"
-            style={{
-              height: '38px',
-              borderRadius: '9999px',
-              border: '1px solid #E0E0EB',
-              gap: '8px',
-              boxShadow: '0px 4px 24px -4px #503DF526',
-              backdropFilter: 'blur(4px)',
-            }}
-          >
+          <div className="inline-flex items-center bg-white/80 backdrop-blur-sm mb-9 mx-auto w-full max-w-[371px] h-[38px] px-4 py-2 rounded-full border border-[#E0E0EB] gap-2 shadow-[0px_4px_24px_-4px_rgba(80,61,245,0.15)]">
             <Image
               src="/images/shine-icon.png"
               alt="Social proof icon"
-              width={20}
-              height={20}
+              width={16}
+              height={16}
               quality={100}
               className="flex-shrink-0"
             />
-            <span
-              className="text-gray-700 truncate"
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 500,
-                fontSize: "14px",
-                lineHeight: "20px",
-              }}
-            >
+            <span className="text-gray-700 font-inter text-[12px] lg:text-[14px] font-medium">
               Programmatic SEO without code or developers
             </span>
           </div>
 
           {/* Main heading */}
-          <h1
-            className="text-gray-900 mb-6 px-4"
-            style={{
-              fontFamily: '"Plus Jakarta Sans", sans-serif',
-              fontWeight: 700,
-              fontSize: "clamp(32px, 5vw, 48px)",
-              lineHeight: "1.3",
-              textAlign: "center",
-            }}
-          >
+          <h1 className="text-gray-900 font-plus-jakarta font-bold text-[clamp(32px,5vw,48px)] leading-[1.3] text-center mb-6 px-4">
             Attract long-tail traffic
             <br />
-            <span
-              className="bg-clip-text text-transparent"
-              style={{
-                background:
-                  "linear-gradient(96.18deg, #5048E5 0%, #8B63E9 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
+            <span className="bg-gradient-to-r from-[#5048E5] to-[#8B63E9] bg-clip-text text-transparent">
               with SEO pages at scale
             </span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl text-[#65758B] mb-10 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-[18px] text-[#65758B] mb-13 max-w-2xl mx-auto leading-relaxed font-inter">
             Create one template, add your data, and generate thousands of SEO
             pages automatically to capture inbound leads at scale.
           </p>
 
           {/* Email form */}
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 px-4">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 px-4"
+          >
             <input
               type="email"
               placeholder="your@email.com"
@@ -122,17 +110,14 @@ export function HeroSection() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-[196px] h-12 px-8 text-white font-semibold rounded-xl hover:opacity-90 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_10px_40px_-10px_rgba(80,72,229,0.2)]"
-              style={{
-                background: 'linear-gradient(96.18deg, #5048E5 0%, #8B63E9 100%)',
-              }}
+              className="w-full sm:w-[196px] h-12 px-8 text-white font-semibold rounded-xl bg-gradient-to-r from-[#5048E5] to-[#8B63E9] hover:opacity-90 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_10px_40px_-10px_rgba(80,72,229,0.2)]"
             >
               {isSubmitting ? "Submitting..." : "Get Early Access"}
             </button>
           </form>
           {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
           {/* Social proof */}
-          <div className="flex items-center justify-center gap-3 px-4">
+          <div className="flex items-center justify-center gap-3 px-4 pt-2">
             <Image
               src="/images/flower-icon-left.png"
               alt="Social proof decoration"
@@ -141,15 +126,7 @@ export function HeroSection() {
               quality={100}
               className="flex-shrink-0 "
             />
-            <p
-              className="text-[#6C7393] text-center"
-              style={{
-                fontFamily: "Inter, sans-serif",
-                fontWeight: 500,
-                fontSize: "14px",
-                lineHeight: "20px",
-              }}
-            >
+            <p className="text-[#6C7393] text-center font-inter text-sm font-medium leading-5">
               The world top companies are doing programmatic SEO. We&apos;ll get
               you started!
             </p>

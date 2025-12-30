@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-inter: var(--font-inter);
+  --font-plus-jakarta: var(--font-plus-jakarta);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,7 +22,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Performance optimizations */
@@ -49,10 +49,12 @@ select:focus-visible {
   outline: none;
 }
 
-/* Grid pattern for background decoration */
-.bg-grid-slate-100 {
-  background-image: linear-gradient(to right, rgb(241 245 249 / 0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(241 245 249 / 0.3) 1px, transparent 1px);
-  background-size: 40px 40px;
+/* Font family utilities */
+.font-inter {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+.font-plus-jakarta {
+  font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
 }
 
