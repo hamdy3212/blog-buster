@@ -1,11 +1,11 @@
 import { useState, FormEvent, useCallback } from 'react';
 import { EMAIL_REGEX } from '@/lib/constants';
+import { useToast } from '@/context/ToastContext';
 
 interface UseEmailFormReturn {
   email: string;
   setEmail: (email: string) => void;
   isSubmitting: boolean;
-  error: string;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
 }
 
@@ -16,7 +16,7 @@ interface UseEmailFormReturn {
 export function useEmailForm(): UseEmailFormReturn {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
+  const { showSuccess, showError } = useToast();
 
   const validateEmail = useCallback((email: string): boolean => {
     return EMAIL_REGEX.test(email);
@@ -24,10 +24,9 @@ export function useEmailForm(): UseEmailFormReturn {
 
   const handleSubmit = useCallback(async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError("");
 
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address");
+      showError("Please enter a valid email address");
       return;
     }
 
@@ -41,20 +40,20 @@ export function useEmailForm(): UseEmailFormReturn {
       // await fetch('/api/subscribe', { method: 'POST', body: JSON.stringify({ email }) });
       
       console.log("Email submitted:", email);
+      showSuccess("Thank you! We'll be in touch soon.");
       setEmail("");
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      showError("Something went wrong. Please try again.");
       console.error("Email submission error:", err);
     } finally {
       setIsSubmitting(false);
     }
-  }, [email, validateEmail]);
+  }, [email, validateEmail, showSuccess, showError]);
 
   return {
     email,
     setEmail,
     isSubmitting,
-    error,
     handleSubmit,
   };
 }

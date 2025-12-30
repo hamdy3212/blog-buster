@@ -46,6 +46,25 @@ select:focus-visible {
   outline: none;
 }
 
+/* Remove browser autofill yellow background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #374151 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input[type="email"] {
+  background-color: white !important;
+}
+
+/* Ensure images don't show yellow placeholder */
+img {
+  background-color: transparent;
+}
+
 /* Font family utilities */
 .font-inter {
   font-family: var(--font-inter), 'Inter', sans-serif;
@@ -53,4 +72,20 @@ select:focus-visible {
 
 .font-plus-jakarta {
   font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Toast animations */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
 }

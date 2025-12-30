@@ -8,7 +8,7 @@ import { BackgroundCircle } from "./BackgroundCircle";
 import { useEmailForm } from "@/hooks/useEmailForm";
 
 export function HeroSection() {
-  const { email, setEmail, isSubmitting, error, handleSubmit } = useEmailForm();
+  const { email, setEmail, isSubmitting, handleSubmit } = useEmailForm();
 
   return (
     <section className="relative py-10 sm:py-28 lg:py-25 bg-white" aria-label="Hero section">
@@ -72,8 +72,6 @@ export function HeroSection() {
               disabled={isSubmitting}
               required
               aria-required="true"
-              aria-invalid={error ? "true" : "false"}
-              aria-describedby={error ? "email-error" : undefined}
               className="w-full sm:w-[400px] h-12 px-6 border-2 border-[#503DF533] rounded-xl font-inter text-base font-normal leading-6 text-gray-700 placeholder:text-[#737373B2] focus:outline-none focus:border-[#503DF5] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <button
@@ -85,11 +83,6 @@ export function HeroSection() {
               {isSubmitting ? "Submitting..." : "Get Early Access"}
             </button>
           </form>
-          {error && (
-            <p id="email-error" className="text-red-600 text-sm mb-4" role="alert">
-              {error}
-            </p>
-          )}
 
           {/* Social proof */}
           <div className="flex items-center justify-center gap-3 px-4 pt-2">
@@ -128,8 +121,6 @@ export function HeroSection() {
             fetchPriority="high"
             className="w-full h-auto object-contain mt-[100px] hidden lg:block"
             sizes="(max-width: 1024px) 100vw, 1200px"
-            placeholder="blur"
-            blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
           />
         </div>
       </Container>
