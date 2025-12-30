@@ -19,7 +19,7 @@ const sizeClasses = {
  */
 export const Container = memo<ContainerProps>(({ children, className = '', size = 'lg' }) => {
   return (
-    <div className={`mx-auto px-4 sm:px-6 lg:px-8 w-full ${sizeClasses[size]} ${className}`}>
+    <div className={`mx-auto w-full ${sizeClasses[size]} ${className}`}>
       {children}
     </div>
   );

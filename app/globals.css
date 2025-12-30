@@ -89,3 +89,48 @@ img {
 .animate-slide-in {
   animation: slide-in 0.3s ease-out;
 }
+
+/* Template visualization scroll animations - Optimized for performance */
+/* Continuous scroll: 3x duplication, move by -33.333% to show first 1/3 (all 6 unique cards) */
+@keyframes scroll-up-continuous {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-33.333%);
+  }
+}
+
+@keyframes scroll-left-continuous {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+/* Desktop vertical scroll - 30s for smooth animation through all unique cards */
+.animate-scroll-up-continuous {
+  animation: scroll-up-continuous 30s linear infinite !important;
+  will-change: transform;
+}
+
+/* Mobile horizontal scroll - 12s to show all cards at comfortable speed */
+.animate-scroll-left-continuous {
+  animation: scroll-left-continuous 12s linear infinite !important;
+  will-change: transform;
+}
+
+/* Pause animation on parent hover for better UX */
+.group:hover .group-hover\:pause {
+  animation-play-state: paused;
+}
+
+/* Respect user's motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-up-continuous,
+  .animate-scroll-left-continuous {
+    animation: none;
+  }
+}
