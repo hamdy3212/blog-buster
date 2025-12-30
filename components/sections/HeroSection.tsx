@@ -37,21 +37,19 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative py-20 sm:py-28 lg:py-36 overflow-hidden">
+    <section className="relative py-10 sm:py-28 lg:py-25 overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
 
       <Container size="lg">
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto px-4">
           {/* Badge */}
           <div 
-            className="inline-flex items-center bg-white/80 mb-[36px]"
+            className="inline-flex items-center bg-white/80 mb-9 mx-auto w-full max-w-[371px] px-4 py-2"
             style={{
-              width: '371px',
               height: '38px',
               borderRadius: '9999px',
               border: '1px solid #E0E0EB',
-              padding: '8px 16px',
               gap: '8px',
               boxShadow: '0px 4px 24px -4px #503DF526',
               backdropFilter: 'blur(4px)',
@@ -66,7 +64,7 @@ export function HeroSection() {
               className="flex-shrink-0"
             />
             <span
-              className="text-gray-700"
+              className="text-gray-700 truncate"
               style={{
                 fontFamily: "Inter, sans-serif",
                 fontWeight: 500,
@@ -80,12 +78,12 @@ export function HeroSection() {
 
           {/* Main heading */}
           <h1
-            className="text-gray-900 mb-6"
+            className="text-gray-900 mb-6 px-4"
             style={{
               fontFamily: '"Plus Jakarta Sans", sans-serif',
               fontWeight: 700,
-              fontSize: "48px",
-              lineHeight: "62px",
+              fontSize: "clamp(32px, 5vw, 48px)",
+              lineHeight: "1.3",
               textAlign: "center",
             }}
           >
@@ -111,7 +109,7 @@ export function HeroSection() {
           </p>
 
           {/* Email form */}
-          <form onSubmit={handleSubmit} className="flex items-center justify-center gap-3 mb-6">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6 px-4">
             <input
               type="email"
               placeholder="your@email.com"
@@ -119,30 +117,14 @@ export function HeroSection() {
               onChange={(e) => setEmail(e.target.value)}
               disabled={isSubmitting}
               required
-              style={{
-                width: '400px',
-                height: '48px',
-                borderRadius: '12px',
-                padding: '0 24px',
-                fontFamily: 'Inter, sans-serif',
-                fontWeight: 400,
-                fontSize: '16px',
-                color: '#737373B2',
-                
-              }}
-              className="border focus:border-[#503DF5] transition-colors"
+              className="w-full sm:w-[400px] h-12 px-6 border-2 border-[#503DF533] rounded-xl font-inter text-base font-normal leading-6 text-gray-700 placeholder:text-[#737373B2] focus:outline-none focus:border-[#503DF5] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             />
             <button
               type="submit"
               disabled={isSubmitting}
-              className="text-white font-semibold hover:opacity-90 transition-all duration-300 cursor-pointer" 
+              className="w-full sm:w-[196px] h-12 px-8 text-white font-semibold rounded-xl hover:opacity-90 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_10px_40px_-10px_rgba(80,72,229,0.2)]"
               style={{
                 background: 'linear-gradient(96.18deg, #5048E5 0%, #8B63E9 100%)',
-                boxShadow: '0px 10px 40px -10px #5048E533',
-                width: '196px',
-                height: '48px',
-                borderRadius: '12px',
-                padding: '0 32px',
               }}
             >
               {isSubmitting ? "Submitting..." : "Get Early Access"}
@@ -150,17 +132,17 @@ export function HeroSection() {
           </form>
           {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
           {/* Social proof */}
-          <div className="flex items-center justify-center gap-3">
+          <div className="flex items-center justify-center gap-3 px-4">
             <Image
               src="/images/flower-icon-left.png"
-              alt="Social proof icon"
+              alt="Social proof decoration"
               width={20}
               height={20}
               quality={100}
-              className="flex-shrink-0"
+              className="flex-shrink-0 "
             />
             <p
-              className="text-[#6C7393]"
+              className="text-[#6C7393] text-center"
               style={{
                 fontFamily: "Inter, sans-serif",
                 fontWeight: 500,
@@ -173,11 +155,11 @@ export function HeroSection() {
             </p>
             <Image
               src="/images/flower-icon.png"
-              alt="Social proof icon"
+              alt="Social proof decoration"
               width={20}
               height={20}
               quality={100}
-              className="flex-shrink-0"
+              className="flex-shrink-0 "
             />
           </div>
 
@@ -188,7 +170,7 @@ export function HeroSection() {
             height={1080}
             quality={95}
             priority
-            className="w-full h-full object-contain mt-[100px]"
+            className="w-full h-full object-contain mt-[100px] hidden lg:block"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
           />
         </div>

@@ -36,10 +36,17 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Focus visible for accessibility */
-*:focus-visible {
+/* Focus visible for accessibility - excluding inputs */
+*:focus-visible:not(input):not(textarea):not(select) {
   outline: 2px solid #6366f1;
   outline-offset: 2px;
+}
+
+/* Remove default focus styles for inputs to allow custom styling */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
 }
 
 /* Grid pattern for background decoration */
